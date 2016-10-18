@@ -1,0 +1,6 @@
+﻿@model isuda.Models.EntryViewModel
+@Html.Partial("_KeywordPartial", Model)
+<form method="POST">
+    <input type="checkbox" name="delete" value="1">
+    <input class="btn btn-primary" type="submit" value="delete">
+</form>

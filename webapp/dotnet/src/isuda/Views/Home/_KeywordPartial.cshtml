@@ -1,0 +1,12 @@
+﻿@model isuda.Models.EntryViewModel
+
+<article>
+    <h1><a href="@("/keyword/" + Model.UriEncodedKeyword)">@Model.Keyword</a></h1>
+    <div>@Html.Raw(Model.Html)</div>
+    <button class="js-add-star" data-keyword="@Model.Keyword" data-user-name="@if (ViewBag.UserName != null){ @ViewBag.UserName }"><img src="/img/star.gif"></button>
+    <span class="js-stars" data-keyword="@Model.Keyword"></span>
+    @foreach (var star in Model.Stars)
+    {
+        <img src="/img/star.gif" title="@star.user_name" alt="@star.user_name">
+    }
+</article>

@@ -1,0 +1,8 @@
+﻿@model string
+@using Isu.Shared
+<h2>@Model.ToTitleCase()</h2>
+<form class="form" action="@("/" + Model)" method="POST">
+    ID: <input type="text" name="name" value="">
+    PW: <input type="password" name="password" value="">
+    <p><input class="btn btn-primary" type="submit" value="@Model.ToTitleCase()" /></p>
+</form>

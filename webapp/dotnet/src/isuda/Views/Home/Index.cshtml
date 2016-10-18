@@ -1,0 +1,53 @@
+﻿@model isuda.Models.HomeIndexViewModel
+<form class="form" action="/keyword" method="POST">
+    <ul>
+        <li><input type="text" name="keyword"></li>
+        <li><textarea name="description"></textarea></li>
+        <li><input class="btn btn-primary" type="submit" value="Post" /></li>
+    </ul>
+</form>
+
+@if (Model != null)
+{
+    if (Model.Entries != null)
+    {
+        foreach (var entry in Model.Entries)
+        {
+            @Html.Partial("_KeywordPartial", entry)
+        }
+    }
+    <nav class="pagination">
+        <ul>
+            @if (Model.Page > 1)
+            {
+
+                <li><a href="@("?page=" + (Model.Page - 1))">&laquo;</a></li>
+            }
+            else
+            {
+                <li class="disabled"><span>&laquo;</span></li>
+            }
+
+            @foreach (var num in Model.Pages)
+            {
+                if (num == Model.Page)
+                {
+                    <li class="active"><a href="@("?page=" + num)">@num</a></li>
+                }
+                else
+                {
+                    <li><a href="@("?page=" + num)">@num</a></li>
+                }
+            }
+
+            @if (Model.Page < Model.LastPage)
+            {
+                <li><a href="@("?page=" + (Model.Page + 1))">&raquo;</a></li>
+            }
+            else
+            {
+                <li class="disabled"><span>&raquo;</span></li>
+            }
+        </ul>
+    </nav>
+}
