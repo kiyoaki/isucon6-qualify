@@ -1,0 +1,18 @@
+[Unit]
+Description = isucon6 qualifier sub application in .NET Core
+
+[Service]
+WorkingDirectory=/home/isucon/webapp/dotnet/src/isutar
+EnvironmentFile=/home/isucon/env.sh
+Environment=PORT=5001
+
+ExecStartPre = /usr/share/dotnet/dotnet build
+ExecStart = /usr/share/dotnet/dotnet run
+
+Restart   = always
+Type      = simple
+User      = isucon
+Group     = isucon
+
+[Install]
+WantedBy = multi-user.target

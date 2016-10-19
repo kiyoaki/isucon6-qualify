@@ -59,7 +59,7 @@
     - copy: src=../files/env.sh dest=/home/isucon/env.sh owner=isucon group=isucon mode=755
     - unarchive:
         copy=no
-        src=https://isucon6qimage.example.com/isucon6q/webapp.tar.gz
+        src=https://raw.githubusercontent.com/kiyoaki/isucon6-qualify/master/webapp.zip
         dest=/home/isucon/
         creates=/home/isucon/webapp
         owner=isucon
@@ -101,6 +101,10 @@
       copy: src=../files/isuda.php.service dest=/etc/systemd/system/isuda.php.service owner=root mode=644
     - name: php isutar (systemd)
       copy: src=../files/isutar.php.service dest=/etc/systemd/system/isutar.php.service owner=root mode=644
+    - name: dotnet isuda (systemd)
+      copy: src=../files/isuda.dotnet.service dest=/etc/systemd/system/isuda.dotnet.service owner=root mode=644
+    - name: dotnet isutar (systemd)
+      copy: src=../files/isutar.dotnet.service dest=/etc/systemd/system/isutar.dotnet.service owner=root mode=644
     - name: default application selection (isupam)
       service: name=isupam state=running enabled=true
     - name: default application selection (isuda)
