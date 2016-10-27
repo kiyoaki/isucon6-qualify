@@ -309,26 +309,20 @@ namespace isuda.Controllers
         private static StarViewModel[] LoadStars(string keyword)
         {
             var url = Config.IsutarOrigin + "/stars?keyword=" + WebUtility.UrlEncode(keyword);
-            using (var httpClient = new HttpClient())
-            {
-                var res = httpClient.GetStringAsync(url).Result;
-                return JsonConvert.DeserializeObject<StarViewModel[]>(res);
-            }
+            var res = HttpClientUtility.HttpClient.GetStringAsync(url).Result;
+            return JsonConvert.DeserializeObject<StarViewModel[]>(res);
         }
 
         private static async Task<bool> IsSpamContents(string content)
         {
-            using (var httpClient = new HttpClient())
-            {
-                var requestContent = new FormUrlEncodedContent(new Dictionary<string, string>
+            var requestContent = new FormUrlEncodedContent(new Dictionary<string, string>
                 {
                     { "content", WebUtility.UrlEncode(content) }
                 });
-                var responseMessage = await httpClient.PostAsync(Config.IsupamOrigin, requestContent);
-                var responseContent = await responseMessage.Content.ReadAsStringAsync();
-                var isupamResponse = JsonConvert.DeserializeObject<IsupamResponse>(responseContent);
-                return isupamResponse.Data.Valid;
-            }
+            var responseMessage = await HttpClientUtility.HttpClient.PostAsync(Config.IsupamOrigin, requestContent);
+            var responseContent = await responseMessage.Content.ReadAsStringAsync();
+            var isupamResponse = JsonConvert.DeserializeObject<IsupamResponse>(responseContent);
+            return isupamResponse.Data.Valid;
         }
 
         private static string RandomString(int size)

@@ -24,10 +24,7 @@ namespace isuda.Controllers
                 connection.Execute("DELETE FROM entry WHERE id > 7101");
             }
 
-            using (var httpClient = new HttpClient())
-            {
-                await httpClient.GetAsync(Config.IsutarOrigin + "/initialize");
-            }
+            await HttpClientUtility.HttpClient.GetAsync(Config.IsutarOrigin + "/initialize");
 
             return new ApiResult { Result = "ok" };
         }

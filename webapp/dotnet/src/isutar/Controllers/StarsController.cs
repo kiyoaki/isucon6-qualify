@@ -40,17 +40,14 @@ namespace isutar.Controllers
         [HttpPost]
         public async Task<ApiResult> Post(PostParameter postParameter)
         {
-            using (var httpClient = new HttpClient())
+            var result = await HttpClientUtility.HttpClient.GetAsync(Config.IsudaOrigin + "/keyword/" + postParameter.Keyword);
+            if (result.StatusCode == HttpStatusCode.NotFound)
             {
-                var result = await httpClient.GetAsync(Config.IsudaOrigin + "/keyword/" + postParameter.Keyword);
-                if (result.StatusCode == HttpStatusCode.NotFound)
-                {
-                    HttpContext.Response.StatusCode = 404;
-                    return null;
-                }
-                var param = new { Keyword = postParameter.Keyword, Name = postParameter.User };
-                _connection.Execute("INSERT INTO star (keyword, user_name, created_at) VALUES (@Keyword, @Name, NOW())", param);
+                HttpContext.Response.StatusCode = 404;
+                return null;
             }
+            var param = new { Keyword = postParameter.Keyword, Name = postParameter.User };
+            _connection.Execute("INSERT INTO star (keyword, user_name, created_at) VALUES (@Keyword, @Name, NOW())", param);
 
             return new ApiResult { Result = "ok" };
         }
