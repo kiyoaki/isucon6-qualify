@@ -1,20 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B7E2F467-D74E-4DEA-BB36-5FAF76EF0250}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CBF2BD45-889A-46D3-A3BE-D0113297A4DB}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isuda", "src\isuda\isuda.csproj", "{FF466B15-B685-41F7-8397-8C54A32EE771}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "isuda", "src\isuda\isuda.xproj", "{FF466B15-B685-41F7-8397-8C54A32EE771}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isutar", "src\isutar\isutar.csproj", "{BCB4F3A2-E6E6-4E8C-9DA2-0244D299282D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "isutar", "src\isutar\isutar.xproj", "{BCB4F3A2-E6E6-4E8C-9DA2-0244D299282D}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Isu.Shared", "src\Isu.Shared\Isu.Shared.xproj", "{39A17D64-11B2-4404-BDD3-FE5B16A5727D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Isu.Shared", "src\Isu.Shared\Isu.Shared.csproj", "{39A17D64-11B2-4404-BDD3-FE5B16A5727D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +37,8 @@ Global
 		{FF466B15-B685-41F7-8397-8C54A32EE771} = {B7E2F467-D74E-4DEA-BB36-5FAF76EF0250}
 		{BCB4F3A2-E6E6-4E8C-9DA2-0244D299282D} = {B7E2F467-D74E-4DEA-BB36-5FAF76EF0250}
 		{39A17D64-11B2-4404-BDD3-FE5B16A5727D} = {B7E2F467-D74E-4DEA-BB36-5FAF76EF0250}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8874BD9-4FBC-4C1C-881F-29A86710618D}
 	EndGlobalSection
 EndGlobal

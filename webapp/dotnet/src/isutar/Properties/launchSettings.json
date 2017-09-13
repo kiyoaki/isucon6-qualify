@@ -12,6 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "ISUDA_DB_PASSWORD": "AcD@54321",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
